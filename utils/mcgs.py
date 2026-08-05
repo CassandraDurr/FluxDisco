@@ -356,6 +356,7 @@ class MCGS:
         episodes: int = 100,
         steps: int = 100,
         print_epi: int = 10,
+        checkpoint_saving: bool = False,
         save_dir: str | None = None,
         save_freq: int = 5,
     ) -> list:
@@ -410,7 +411,7 @@ class MCGS:
             self.propagate_upwards(trajectory_nodes[-1])
 
             # --- 5. CHECKPOINT SAVING ---
-            if save_dir and ((episode + 1) % save_freq == 0):
+            if checkpoint_saving and save_dir and ((episode + 1) % save_freq == 0):
                 print(f"Saving checkpoint at episode {episode + 1}...")
                 # Save nodes and bounds
                 self.export_graph_bounds(

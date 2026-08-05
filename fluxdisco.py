@@ -50,12 +50,13 @@ def run_fluxdisco(
     run_dir = os.path.join(save_dir, experiment_name)
     os.makedirs(run_dir, exist_ok=True)
 
+    # Set random seeds for reproducibility
     random.seed(seed)
     np.random.seed(seed)
 
     # Create initial state
     num_fluxes = system_config["num_fluxes"]
-    if system_config["initial_state"] is not None:
+    if system_config.get("initial_state") is not None:
         initial_state = system_config["initial_state"]
     else:
         initial_state = (
@@ -63,6 +64,14 @@ def run_fluxdisco(
             [["M"] for _ in range(num_fluxes)],
             [0 for _ in range(num_fluxes)],
         )
+
+    # Create terminal grammar rules if not provided
+    if system_config.get("terminal_rules_for_M") is not None:
+        terminal_rules_for_M = system_config["terminal_rules_for_M"]
+    else:
+        terminal_rules_for_M = [
+            f"M -> {state}" for state in system_config["states"]
+        ] + ["M -> C"]
 
     # Initialise the search graph
     search_graph = MCGS(
@@ -72,7 +81,7 @@ def run_fluxdisco(
         state_variables=system_config["state_variables"],
         state_to_variable=system_config["state_to_variable"],
         num_fluxes=num_fluxes,
-        terminal_rules_for_M=system_config["terminal_rules_for_M"],
+        terminal_rules_for_M=terminal_rules_for_M,
         grammar=system_config["grammar"],
         flux_priors=system_config["flux_priors"],
         initial_state=initial_state,
@@ -89,9 +98,10 @@ def run_fluxdisco(
     top_results = search_graph.run_search(
         episodes=search_params.get("episodes", 100),
         steps=steps,
-        print_epi=10,
+        checkpoint_saving=search_params.get("checkpoint_saving", False),
+        print_epi=search_params.get("print_epi", 10),
         save_dir=run_dir,
-        save_freq=5,
+        save_freq=search_params.get("save_freq", 10),
     )
 
     # Save graph node statistics and explored candidates
