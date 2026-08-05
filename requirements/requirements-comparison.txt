@@ -1,8 +1,0 @@
-torch==2.0.0
-odeformer==0.1.7
-numpy # ==1.26.4
-torchdiffeq==0.2.5
-matplotlib # ==3.10.3
-git+https://github.com/brencej/ProGED
-pysr==1.5.9
-pysindy==2.1.0
