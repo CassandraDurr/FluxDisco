@@ -32,8 +32,7 @@ def run_fluxdisco(
 
     Returns:
         tuple[list, pd.DataFrame]: Top search results (list) and all candidate systems (pd.DataFrame).
-    """
-
+    """  # noqa: E501
     # Get search parameters
     if search_params is None:
         search_params = {}
