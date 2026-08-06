@@ -78,6 +78,9 @@ class MCGS:
         self.non_terminals_regex = re.compile(f"({'|'.join(self.non_terminals)})")
         self.terminal_rules_for_M = terminal_rules_for_M
 
+        # Check for division in grammar
+        self.division_in_grammar = self.check_for_division_in_grammar()
+
         # Prevent recalculating expesive reward function
         # Cache: {tuple(str_exprs): (reward, details)}
         self.reward_cache = {}
@@ -104,6 +107,7 @@ class MCGS:
             obs_keys=self.obs_keys,
             temperature=temperature,
             normalise_reward=normalise_reward,
+            division_in_grammar=self.division_in_grammar,
         )
 
         # Transposition table: maps state hash -> SymbolicNode
@@ -113,6 +117,14 @@ class MCGS:
         self.root = SymbolicNode(state=initial_state, graph=self)
         root_key = self.hash_state(self.root.state)
         self.graph_nodes[root_key] = self.root
+
+    def check_for_division_in_grammar(self) -> bool:
+        """Check if the grammar contains division operation."""
+        for rules in self.grammar.values():
+            for rule in rules:
+                if "M / M" in rule:
+                    return True
+        return False
 
     def vectorise_data(self, data_X: list[dict]) -> None:
         """Vectorise time, intial conditions, and data for multiple replications."""
@@ -236,6 +248,7 @@ class MCGS:
                         state_vars_base=self.state_var_set,
                         start_index=0,
                         eval_rules=False,
+                        division_in_grammar=self.division_in_grammar,
                     )
                 else:
                     # Simplify and fold constants for terminal expressions
@@ -244,6 +257,7 @@ class MCGS:
                         state_vars=self.state_var_set,
                         start_index=0,
                         eval_rules=False,
+                        division_in_grammar=self.division_in_grammar,
                     )
 
                 # Store the folded expression and the number of constants for this flux

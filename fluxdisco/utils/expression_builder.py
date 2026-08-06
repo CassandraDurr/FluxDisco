@@ -56,6 +56,7 @@ class ExpressionBuilder:
         elif rhs == "M * M":
             return self.build_expr() * self.build_expr()
         elif rhs == "M / M":
+            # Simple division - add protected division after constant folding
             return self.build_expr() / self.build_expr()
         elif rhs == "sqrt(M)":
             # Simple sqrt - add protected sqrt after constant folding

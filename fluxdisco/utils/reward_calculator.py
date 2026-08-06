@@ -67,6 +67,7 @@ class RewardCalculator:
         solver_method: str = "rk4",  # Choice: "euler" or "rk4"
         normalise_reward: bool = False,
         max_inner_workers: int = 8,
+        division_in_grammar: bool = False,
     ):
         """Initialise reward calculator.
 
@@ -85,12 +86,14 @@ class RewardCalculator:
             solver_method: Choice of ODE solver ("euler" or "rk4")
             normalise_reward: Whether to normalise the reward
             max_inner_workers: Number of allowed inner workers for parallel constant opt.
+            division_in_grammar: Whether division is allowed in the grammar.
         """
         self.eta = eta
         self.n_term = n_term
         self.temperature = temperature
         self.solver_method = solver_method
         self.max_inner_workers = max_inner_workers
+        self.division_in_grammar = division_in_grammar
 
         # System structure
         self.system_structure = system_structure
@@ -182,6 +185,7 @@ class RewardCalculator:
                     state_vars=self.state_var_set,
                     start_index=k_index,
                     eval_rules=True,
+                    division_in_grammar=self.division_in_grammar,
                 )
                 all_consts.extend(k_consts)
                 folded_flux_exprs.append(folded_expr)

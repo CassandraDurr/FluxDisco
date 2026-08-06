@@ -4,13 +4,12 @@ import math
 
 import sympy
 
-DIVISION_IN_GRAMMAR = False
-
 
 def rules_count(
     expr: sympy.Expr,
     state_vars: set[sympy.Symbol],
     constants_seen: set | None = None,
+    division_in_grammar: bool = False,
 ) -> tuple[int, set | None]:
     """Count the number of grammar rules used to build an expression (post-folding)."""
     # Initialise the constants seen on the first call
@@ -28,7 +27,7 @@ def rules_count(
         num_rules += len(terms_list) - 1
 
     for term in terms_list:
-        if DIVISION_IN_GRAMMAR:
+        if division_in_grammar:
             # Handle fractions
             num, den = sympy.fraction(term)
             if den != 1:
