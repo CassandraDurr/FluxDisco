@@ -1,1 +1,46 @@
-# FluxDisco
+# FluxDisco: Symbolic Regression for Stoichiometric Dynamical Systems via Monte Carlo Graph Search 🪩
+
+Dynamical symbolic regression methods identify governing differential equations from noisy data, balancing interpretability and predictive accuracy. However, standard methods often produce expressions that violate known physical laws.
+
+To address this, we propose **FluxDisco**, a physics-informed framework tailored for flux-based, stoichiometric ODE systems. By leveraging a known stoichiometry, we reduce the expression search space and ensure physical adherence. Our framework adapts the Monte Carlo Graph Search algorithm for the unique challenges associated with joint flux discovery of stoichiometric systems.
+
+## Installation ⚡
+This codebase currently supports Python 3.14. It can be installed directly via `pip` (recommended for users) or by cloning the repository.
+
+### Installation via `pip`
+To install with `pip`, run the following command in terminal:
+```
+pip install git+https://github.com/CassandraDurr/FluxDisco.git
+```
+
+### Installation via Git Clone
+To clone the repository and install it locally, run the following commands in terminal:
+```
+git clone https://github.com/CassandraDurr/FluxDisco.git
+cd FluxDisco
+pip install -e .
+```
+
+*(Optional)* If you plan to contribute to this package, you should also install additional development dependencies:
+```
+pip install -r requirements/requirements-dev.txt
+```
+These include tools for testing, code formatting and quality checking.
+
+## Running FluxDisco 🚀
+Within the `fluxdisco/example` folder, there is a notebook `example.ipynb` that shows how to run FluxDisco for the coupled Lotka-Volterra ODE system.
+
+**Expected Output:** Running FluxDisco will output the search's results to a specified directory. For example:
+```
+top_equations, results_df = run_fluxdisco(
+    data=lv_data,
+    system_config=system_config,
+    search_params=search_params,
+    experiment_name="lotka_volterra_example",
+    save_dir="example_results",
+)
+```
+will output the results to `example_results/lotka_volterra_example/` (which can be seen in the `fluxdisco/example` folder). The code also outputs the top equations and full set of results for direct usage.
+
+## License 📄
+This project is licensed under the MIT License - see the `LICENSE` file for more details.
