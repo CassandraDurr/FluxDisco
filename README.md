@@ -1,9 +1,5 @@
 # FluxDisco: Symbolic Regression for Stoichiometric Dynamical Systems via Monte Carlo Graph Search 🪩
 
-Dynamical symbolic regression methods identify governing differential equations from noisy data, balancing interpretability and predictive accuracy. However, standard methods often produce expressions that violate known physical laws.
-
-To address this, we propose **FluxDisco**, a physics-informed framework tailored for flux-based, stoichiometric ODE systems. By leveraging a known stoichiometry, we reduce the expression search space and ensure physical adherence. Our framework adapts the Monte Carlo Graph Search algorithm for the unique challenges associated with joint flux discovery of stoichiometric systems.
-
 ## Installation ⚡
 This codebase currently supports Python 3.14. It can be installed directly via `pip` (recommended for users) or by cloning the repository.
 
