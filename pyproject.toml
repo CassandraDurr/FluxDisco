@@ -34,7 +34,7 @@ optional-dependencies={dev={file=["requirements/requirements-dev.txt"]}}
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["fluxdisco", "fluxdisco.*"]
-exclude = ["fluxdisco.example*"]
+exclude = ["fluxdisco.example*", "fluxdisco.paper-results*"]
 
 [tool.pytest.ini_options]
 testpaths = ["test"]

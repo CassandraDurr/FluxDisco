@@ -101,7 +101,7 @@ def run_fluxdisco(
         checkpoint_saving=search_params.get("checkpoint_saving", False),
         print_epi=search_params.get("print_epi", 10),
         save_dir=run_dir,
-        save_freq=search_params.get("save_freq", 10),
+        save_freq=search_params.get("save_freq", 5),
     )
 
     # Save graph node statistics and explored candidates
