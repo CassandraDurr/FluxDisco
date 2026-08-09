@@ -92,6 +92,11 @@ def run_fluxdisco(
         rollouts_per_leaf=search_params.get("rollouts_per_leaf", 2),
         warm_start_rollouts=search_params.get("warm_start_rollouts", 1),
         temperature=search_params.get("temperature", 0.005),
+        normalise_reward=search_params.get("normalise_reward", False),
+        constant_only_flux_allowed=search_params.get(
+            "constant_only_flux_allowed", False
+        ),
+        prevent_merging=search_params.get("prevent_merging", False),
     )
 
     # Run search
