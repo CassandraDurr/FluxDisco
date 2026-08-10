@@ -1,6 +1,7 @@
 
 .vscode
 submit_*.sh
+*odeformer.pt
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
