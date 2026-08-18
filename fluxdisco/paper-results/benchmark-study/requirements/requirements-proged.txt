@@ -1,0 +1,5 @@
+git+https://github.com/brencej/ProGED
+numpy
+pandas
+sympy
+scipy

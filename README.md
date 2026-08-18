@@ -38,7 +38,7 @@ top_equations, results_df = run_fluxdisco(
 ```
 will output the results to `example_results/lotka_volterra_example/` (which can be seen in the `fluxdisco/example` folder). The code also outputs the top equations and full set of results for direct usage.
 
-Code for reproducing the paper results can be found in the `fluxdisco/paper-results` directory along with simulated datasets for all case studies considered in the paper.
+Code for reproducing the paper results can be found in the `fluxdisco/paper-results` directory along with simulated datasets for all case studies considered in the paper. A separate `README` is available in the `fluxdisco/paper-results` directory describing how to reproduce the experimental results from the paper.
 
 ## License 📄
 This project is licensed under the MIT License - see the `LICENSE` file for more details.

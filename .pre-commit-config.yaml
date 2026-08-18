@@ -27,7 +27,8 @@ repos:
           - --max-line-length=100
         exclude: >
           (?x)(
-            __init__\.py$
+            __init__\.py$|
+            ^fluxdisco/paper-results/benchmark-study/
           )
 
   - repo: https://github.com/PyCQA/isort

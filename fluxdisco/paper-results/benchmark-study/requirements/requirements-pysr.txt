@@ -1,0 +1,5 @@
+pysr==1.5.9
+numpy
+pandas
+sympy
+scipy
