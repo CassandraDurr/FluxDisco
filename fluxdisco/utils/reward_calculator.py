@@ -424,8 +424,6 @@ class RewardCalculator:
             return {"prevalence": predicted_prevalence}
 
         elif obs_keys == {"incidence"}:
-            predicted_prevalence = pred_traj_tensor[:, 1, :]
-            # shape (time, num_realisations)
             predicted_susceptibles = pred_traj_tensor[:, 0, :]
             # shape (time, num_realisations)
             pred_incidence = -np.diff(predicted_susceptibles, axis=0)
