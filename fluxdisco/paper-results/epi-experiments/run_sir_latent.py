@@ -1,5 +1,7 @@
 """Run SIR experiments given incidence data, prevalence data, or both."""
 
+import os
+import sys
 import argparse
 import random
 
@@ -8,7 +10,12 @@ import sympy
 from joblib import Parallel, delayed, parallel_config
 from scipy.integrate import odeint
 
-from ..utils import run_single_experiment, sir_odes
+# Add utils directory to path
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+sys.path.append(parent_dir)
+
+from utils import run_single_experiment, sir_odes
 
 # -----------------------------
 # System configurations
@@ -291,7 +298,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     systems_to_run = (
-        list(configurations.keys()) if args.system == "all" else [args.system]
+        list(configurations.keys()) if "all" in args.system else args.system
     )
 
     print("EXPERIMENT CONFIGURATION")
