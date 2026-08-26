@@ -130,6 +130,7 @@ class MCGS:
         """Vectorise time, intial conditions, and data for multiple replications."""
         # Get keys of observational data
         obs_keys = list(data_X[0]["states"].keys())
+        print(f"Observational data keys: {obs_keys}")
         self.obs_keys = obs_keys
 
         # Time vector: assumption = realisations share the same time steps.

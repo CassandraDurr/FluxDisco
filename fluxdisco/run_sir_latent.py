@@ -1,21 +1,13 @@
 """Run SIR experiments given incidence data, prevalence data, or both."""
 
 import argparse
-import os
 import random
-import sys
 
 import numpy as np
 import sympy
+from epi_utils import run_single_experiment, sir_odes  # noqa: E402
 from joblib import Parallel, delayed, parallel_config
 from scipy.integrate import odeint
-
-# Add utils directory to path
-current_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.dirname(current_dir)
-sys.path.append(parent_dir)
-
-from utils import run_single_experiment, sir_odes  # noqa: E402
 
 # -----------------------------
 # System configurations
