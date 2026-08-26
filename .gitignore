@@ -1,6 +1,6 @@
 
 .vscode
-submit_*.sh
+# submit_*.sh
 *odeformer.pt
 
 # Byte-compiled / optimized / DLL files
