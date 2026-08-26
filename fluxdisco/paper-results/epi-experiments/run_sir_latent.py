@@ -1,9 +1,9 @@
 """Run SIR experiments given incidence data, prevalence data, or both."""
 
-import os
-import sys
 import argparse
+import os
 import random
+import sys
 
 import numpy as np
 import sympy
@@ -15,7 +15,7 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(current_dir)
 sys.path.append(parent_dir)
 
-from utils import run_single_experiment, sir_odes
+from utils import run_single_experiment, sir_odes  # noqa: E402
 
 # -----------------------------
 # System configurations

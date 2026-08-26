@@ -1,6 +1,6 @@
 EXPERIMENT CONFIGURATION
 Regime:  Standard
-Systems: 
+Systems:
   - sir_prevalence_only_1
   - sir_incidence_only_1
   - sir_both_1
