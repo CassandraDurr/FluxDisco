@@ -407,7 +407,6 @@ class RewardCalculator:
             dict[str, np.ndarray]: Dictionary of predictions in the same form as observations.
         """
         obs_keys = set(observations.keys())
-        print(f"Extracting predictions for observation keys: {obs_keys}")
 
         # === Options specific to the SIR epidemic system ===
         if obs_keys == {"prevalence", "incidence"}:

@@ -18,4 +18,4 @@ source ~/miniconda3/etc/profile.d/conda.sh
 conda activate py314
 
 # git pull
-python run_sir_latent.py --system sir_prevalence_only_1 sir_incidence_only_1 sir_both_1 --regime Standard
+python run_sir_latent.py --system sir_prevalence_only_10 sir_incidence_only_10 sir_both_10 --regime Standard

@@ -1,0 +1,43 @@
+EXPERIMENT CONFIGURATION
+Regime:  Standard
+Systems: 
+  - sir_prevalence_only_1
+  - sir_incidence_only_1
+  - sir_both_1
+Running 9 experiments in parallel...
+Starting FluxDisco search: sir_both_1_standard/experiment_high_noise
+Observational data keys: ['prevalence', 'incidence']
+Episode 0/100...
+Extracting predictions for observation keys: {'prevalence', 'incidence'}
+Starting FluxDisco search: sir_prevalence_only_1_standard/experiment_low_noise
+Observational data keys: ['prevalence']
+Episode 0/100...
+Extracting predictions for observation keys: {'prevalence'}
+Starting FluxDisco search: sir_both_1_standard/experiment_low_noise
+Observational data keys: ['prevalence', 'incidence']
+Episode 0/100...
+Extracting predictions for observation keys: {'prevalence', 'incidence'}
+Starting FluxDisco search: sir_prevalence_only_1_standard/experiment_high_noise
+Observational data keys: ['prevalence']
+Episode 0/100...
+Extracting predictions for observation keys: {'prevalence'}
+Starting FluxDisco search: sir_both_1_standard/experiment_no_noise
+Observational data keys: ['prevalence', 'incidence']
+Episode 0/100...
+Extracting predictions for observation keys: {'incidence', 'prevalence'}
+Starting FluxDisco search: sir_incidence_only_1_standard/experiment_no_noise
+Observational data keys: ['incidence']
+Episode 0/100...
+Extracting predictions for observation keys: {'incidence'}
+Starting FluxDisco search: sir_incidence_only_1_standard/experiment_high_noise
+Observational data keys: ['incidence']
+Episode 0/100...
+Extracting predictions for observation keys: {'incidence'}
+Starting FluxDisco search: sir_incidence_only_1_standard/experiment_low_noise
+Observational data keys: ['incidence']
+Episode 0/100...
+Extracting predictions for observation keys: {'incidence'}
+Starting FluxDisco search: sir_prevalence_only_1_standard/experiment_no_noise
+Observational data keys: ['prevalence']
+Episode 0/100...
+Extracting predictions for observation keys: {'prevalence'}

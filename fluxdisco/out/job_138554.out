@@ -1,0 +1,1053 @@
+EXPERIMENT CONFIGURATION
+Regime:  Standard
+Systems: 
+  - sir_prevalence_only_5
+  - sir_incidence_only_5
+  - sir_both_5
+Running 9 experiments in parallel...
+Starting FluxDisco search: sir_both_5_standard/experiment_no_noise
+Episode 0/100...
+Starting FluxDisco search: sir_prevalence_only_5_standard/experiment_no_noise
+Episode 0/100...
+Starting FluxDisco search: sir_prevalence_only_5_standard/experiment_low_noise
+Episode 0/100...
+Starting FluxDisco search: sir_incidence_only_5_standard/experiment_no_noise
+Episode 0/100...
+Starting FluxDisco search: sir_incidence_only_5_standard/experiment_high_noise
+Episode 0/100...
+Starting FluxDisco search: sir_incidence_only_5_standard/experiment_low_noise
+Episode 0/100...
+Starting FluxDisco search: sir_both_5_standard/experiment_high_noise
+Episode 0/100...
+Starting FluxDisco search: sir_prevalence_only_5_standard/experiment_high_noise
+Episode 0/100...
+Starting FluxDisco search: sir_both_5_standard/experiment_low_noise
+Episode 0/100...
+   Reached terminal node at step 18
+   Reached terminal node at step 5
+   Reached terminal node at step 6
+   Reached terminal node at step 14
+   Reached terminal node at step 5
+   Reached terminal node at step 3
+   Reached terminal node at step 7
+   Reached terminal node at step 3
+   Reached terminal node at step 9
+   Reached terminal node at step 9
+Episode 10/100...
+   Reached terminal node at step 15
+   Reached terminal node at step 13
+   Reached terminal node at step 5
+   Reached terminal node at step 16
+   Reached terminal node at step 17
+   Reached terminal node at step 11
+   Reached terminal node at step 9
+   Reached terminal node at step 9
+   Reached terminal node at step 6
+   Reached terminal node at step 20
+Episode 20/100...
+   Reached terminal node at step 11
+   Reached terminal node at step 9
+   Reached terminal node at step 16
+   Reached terminal node at step 5
+   Reached terminal node at step 7
+   Reached terminal node at step 15
+   Reached terminal node at step 9
+   Reached terminal node at step 12
+   Reached terminal node at step 15
+   Reached terminal node at step 19
+Episode 30/100...
+   Reached terminal node at step 7
+   Reached terminal node at step 12
+   Reached terminal node at step 7
+   Reached terminal node at step 11
+   Reached terminal node at step 18
+   Reached terminal node at step 8
+   Reached terminal node at step 7
+   Reached terminal node at step 7
+   Reached terminal node at step 11
+   Reached terminal node at step 12
+Episode 40/100...
+   Reached terminal node at step 6
+   Reached terminal node at step 12
+   Reached terminal node at step 7
+   Reached terminal node at step 15
+   Reached terminal node at step 10
+   Reached terminal node at step 6
+   Reached terminal node at step 9
+   Reached terminal node at step 9
+   Reached terminal node at step 11
+   Reached terminal node at step 7
+Episode 50/100...
+   Reached terminal node at step 15
+   Reached terminal node at step 12
+   Reached terminal node at step 7
+   Reached terminal node at step 9
+   Reached terminal node at step 7
+   Reached terminal node at step 7
+   Reached terminal node at step 12
+   Reached terminal node at step 12
+   Reached terminal node at step 7
+   Reached terminal node at step 9
+Episode 60/100...
+   Reached terminal node at step 11
+   Reached terminal node at step 9
+   Reached terminal node at step 10
+   Reached terminal node at step 16
+   Reached terminal node at step 11
+   Reached terminal node at step 13
+Constant optimisation failed, returning high error
+   Reached terminal node at step 15
+   Reached terminal node at step 13
+   Reached terminal node at step 14
+   Reached terminal node at step 2
+Episode 70/100...
+   Reached terminal node at step 5
+   Reached terminal node at step 9
+   Reached terminal node at step 13
+   Reached terminal node at step 6
+   Reached terminal node at step 12
+   Reached terminal node at step 7
+   Reached terminal node at step 10
+   Reached terminal node at step 9
+   Reached terminal node at step 10
+   Reached terminal node at step 11
+Episode 80/100...
+   Reached terminal node at step 7
+   Reached terminal node at step 14
+   Reached terminal node at step 8
+   Reached terminal node at step 16
+   Reached terminal node at step 11
+   Reached terminal node at step 19
+   Reached terminal node at step 11
+   Reached terminal node at step 11
+   Reached terminal node at step 18
+   Reached terminal node at step 7
+Episode 90/100...
+   Reached terminal node at step 6
+   Reached terminal node at step 14
+   Reached terminal node at step 6
+   Reached terminal node at step 16
+   Reached terminal node at step 13
+   Reached terminal node at step 7
+   Reached terminal node at step 19
+   Reached terminal node at step 19
+   Reached terminal node at step 12
+   Reached terminal node at step 8
+Saved estimated data to results/sir_incidence_only_5_standard/experiment_high_noise/estimated_data.csv
+Time taken: 6906.06 seconds (115.10 min, 1.92 hr)
+
+Finished sir_incidence_only_5_standard/experiment_high_noise. Results saved to results/sir_incidence_only_5_standard/experiment_high_noise
+Finished sir_incidence_only_5_standard/experiment_high_noise
+   Reached terminal node at step 17
+   Reached terminal node at step 10
+   Reached terminal node at step 15
+   Reached terminal node at step 6
+   Reached terminal node at step 3
+   Reached terminal node at step 7
+   Reached terminal node at step 5
+   Reached terminal node at step 8
+   Reached terminal node at step 6
+   Reached terminal node at step 3
+Episode 10/100...
+   Reached terminal node at step 5
+   Reached terminal node at step 15
+   Reached terminal node at step 17
+   Reached terminal node at step 11
+   Reached terminal node at step 18
+   Reached terminal node at step 16
+   Reached terminal node at step 13
+   Reached terminal node at step 15
+   Reached terminal node at step 6
+   Reached terminal node at step 7
+Episode 20/100...
+   Reached terminal node at step 15
+   Reached terminal node at step 7
+   Reached terminal node at step 12
+   Reached terminal node at step 9
+   Reached terminal node at step 17
+   Reached terminal node at step 7
+   Reached terminal node at step 9
+   Reached terminal node at step 6
+   Reached terminal node at step 7
+   Reached terminal node at step 14
+Episode 30/100...
+   Reached terminal node at step 15
+   Reached terminal node at step 5
+   Reached terminal node at step 11
+   Reached terminal node at step 6
+   Reached terminal node at step 7
+   Reached terminal node at step 14
+   Reached terminal node at step 15
+   Reached terminal node at step 11
+   Reached terminal node at step 11
+   Reached terminal node at step 13
+Episode 40/100...
+   Reached terminal node at step 22
+   Reached terminal node at step 11
+   Reached terminal node at step 16
+   Reached terminal node at step 15
+   Reached terminal node at step 20
+   Reached terminal node at step 17
+   Reached terminal node at step 16
+   Reached terminal node at step 11
+   Reached terminal node at step 15
+   Reached terminal node at step 20
+Episode 50/100...
+   Reached terminal node at step 9
+   Reached terminal node at step 8
+   Reached terminal node at step 12
+   Reached terminal node at step 12
+   Reached terminal node at step 9
+   Reached terminal node at step 17
+   Reached terminal node at step 10
+   Reached terminal node at step 11
+   Reached terminal node at step 10
+   Reached terminal node at step 12
+Episode 60/100...
+   Reached terminal node at step 11
+   Reached terminal node at step 14
+   Reached terminal node at step 12
+   Reached terminal node at step 9
+   Reached terminal node at step 10
+   Reached terminal node at step 20
+   Reached terminal node at step 15
+   Reached terminal node at step 12
+   Reached terminal node at step 8
+   Reached terminal node at step 11
+Episode 70/100...
+   Reached terminal node at step 15
+   Reached terminal node at step 12
+   Reached terminal node at step 21
+   Reached terminal node at step 7
+   Reached terminal node at step 13
+   Reached terminal node at step 11
+   Reached terminal node at step 17
+   Reached terminal node at step 8
+   Reached terminal node at step 19
+   Reached terminal node at step 15
+Episode 80/100...
+   Reached terminal node at step 18
+   Reached terminal node at step 10
+   Reached terminal node at step 11
+   Reached terminal node at step 11
+   Reached terminal node at step 15
+   Reached terminal node at step 11
+   Reached terminal node at step 12
+   Reached terminal node at step 6
+   Reached terminal node at step 14
+   Reached terminal node at step 20
+Episode 90/100...
+   Reached terminal node at step 11
+   Reached terminal node at step 8
+   Reached terminal node at step 14
+   Reached terminal node at step 7
+   Reached terminal node at step 19
+   Reached terminal node at step 12
+   Reached terminal node at step 13
+   Reached terminal node at step 13
+   Reached terminal node at step 13
+   Reached terminal node at step 9
+Saved estimated data to results/sir_incidence_only_5_standard/experiment_no_noise/estimated_data.csv
+Time taken: 11370.31 seconds (189.51 min, 3.16 hr)
+
+Finished sir_incidence_only_5_standard/experiment_no_noise. Results saved to results/sir_incidence_only_5_standard/experiment_no_noise
+Finished sir_incidence_only_5_standard/experiment_no_noise
+   Reached terminal node at step 15
+   Reached terminal node at step 12
+   Reached terminal node at step 10
+   Reached terminal node at step 8
+   Reached terminal node at step 5
+   Reached terminal node at step 5
+   Reached terminal node at step 12
+   Reached terminal node at step 15
+   Reached terminal node at step 3
+   Reached terminal node at step 3
+Episode 10/100...
+   Reached terminal node at step 8
+   Reached terminal node at step 5
+   Reached terminal node at step 14
+   Reached terminal node at step 7
+   Reached terminal node at step 7
+   Reached terminal node at step 6
+   Reached terminal node at step 11
+   Reached terminal node at step 9
+   Reached terminal node at step 12
+   Reached terminal node at step 19
+Episode 20/100...
+   Reached terminal node at step 13
+   Reached terminal node at step 12
+   Reached terminal node at step 15
+   Reached terminal node at step 5
+   Reached terminal node at step 21
+   Reached terminal node at step 12
+   Reached terminal node at step 6
+   Reached terminal node at step 21
+   Reached terminal node at step 13
+   Reached terminal node at step 13
+Episode 30/100...
+   Reached terminal node at step 16
+   Reached terminal node at step 8
+   Reached terminal node at step 9
+   Reached terminal node at step 7
+   Reached terminal node at step 16
+   Reached terminal node at step 19
+   Reached terminal node at step 7
+   Reached terminal node at step 16
+   Reached terminal node at step 14
+   Reached terminal node at step 11
+Episode 40/100...
+   Reached terminal node at step 9
+   Reached terminal node at step 13
+   Reached terminal node at step 17
+   Reached terminal node at step 13
+   Reached terminal node at step 10
+   Reached terminal node at step 21
+   Reached terminal node at step 10
+   Reached terminal node at step 5
+   Reached terminal node at step 6
+   Reached terminal node at step 10
+Episode 50/100...
+   Reached terminal node at step 13
+   Reached terminal node at step 17
+   Reached terminal node at step 9
+   Reached terminal node at step 13
+   Reached terminal node at step 14
+   Reached terminal node at step 19
+   Reached terminal node at step 7
+   Reached terminal node at step 11
+   Reached terminal node at step 14
+   Reached terminal node at step 10
+Episode 60/100...
+   Reached terminal node at step 11
+   Reached terminal node at step 18
+   Reached terminal node at step 10
+   Reached terminal node at step 11
+   Reached terminal node at step 11
+   Reached terminal node at step 11
+   Reached terminal node at step 9
+   Reached terminal node at step 12
+   Reached terminal node at step 18
+   Reached terminal node at step 8
+Episode 70/100...
+   Reached terminal node at step 9
+   Reached terminal node at step 17
+   Reached terminal node at step 15
+   Reached terminal node at step 11
+   Reached terminal node at step 5
+   Reached terminal node at step 11
+   Reached terminal node at step 9
+   Reached terminal node at step 19
+   Reached terminal node at step 14
+   Reached terminal node at step 11
+Episode 80/100...
+   Reached terminal node at step 10
+   Reached terminal node at step 7
+   Reached terminal node at step 13
+   Reached terminal node at step 16
+   Reached terminal node at step 10
+   Reached terminal node at step 13
+   Reached terminal node at step 21
+   Reached terminal node at step 14
+   Reached terminal node at step 14
+   Reached terminal node at step 14
+Episode 90/100...
+   Reached terminal node at step 20
+   Reached terminal node at step 7
+   Reached terminal node at step 10
+   Reached terminal node at step 9
+   Reached terminal node at step 13
+   Reached terminal node at step 10
+   Reached terminal node at step 12
+   Reached terminal node at step 18
+   Reached terminal node at step 12
+   Reached terminal node at step 15
+Saved estimated data to results/sir_incidence_only_5_standard/experiment_low_noise/estimated_data.csv
+Time taken: 11815.34 seconds (196.92 min, 3.28 hr)
+
+Finished sir_incidence_only_5_standard/experiment_low_noise. Results saved to results/sir_incidence_only_5_standard/experiment_low_noise
+Finished sir_incidence_only_5_standard/experiment_low_noise
+   Reached terminal node at step 10
+   Reached terminal node at step 21
+   Reached terminal node at step 3
+   Reached terminal node at step 7
+   Reached terminal node at step 20
+   Reached terminal node at step 14
+   Reached terminal node at step 2
+   Reached terminal node at step 9
+   Reached terminal node at step 2
+   Reached terminal node at step 3
+Episode 10/100...
+   Reached terminal node at step 11
+   Reached terminal node at step 12
+   Reached terminal node at step 12
+   Reached terminal node at step 23
+   Reached terminal node at step 14
+   Reached terminal node at step 18
+   Reached terminal node at step 19
+   Reached terminal node at step 14
+   Reached terminal node at step 13
+   Reached terminal node at step 19
+Episode 20/100...
+   Reached terminal node at step 20
+   Reached terminal node at step 3
+   Reached terminal node at step 21
+   Reached terminal node at step 3
+   Reached terminal node at step 3
+   Reached terminal node at step 3
+   Reached terminal node at step 21
+   Reached terminal node at step 22
+   Reached terminal node at step 19
+   Reached terminal node at step 11
+Episode 30/100...
+   Reached terminal node at step 23
+   Reached terminal node at step 5
+   Reached terminal node at step 12
+   Reached terminal node at step 12
+   Reached terminal node at step 3
+   Reached terminal node at step 14
+   Reached terminal node at step 14
+   Reached terminal node at step 21
+   Reached terminal node at step 21
+   Reached terminal node at step 17
+Episode 40/100...
+   Reached terminal node at step 13
+   Reached terminal node at step 9
+   Reached terminal node at step 5
+   Reached terminal node at step 6
+   Reached terminal node at step 12
+   Reached terminal node at step 11
+   Reached terminal node at step 19
+   Reached terminal node at step 11
+   Reached terminal node at step 19
+   Reached terminal node at step 3
+Episode 50/100...
+   Reached terminal node at step 6
+   Reached terminal node at step 10
+   Reached terminal node at step 14
+   Reached terminal node at step 17
+   Reached terminal node at step 17
+   Reached terminal node at step 19
+   Reached terminal node at step 3
+   Reached terminal node at step 7
+   Reached terminal node at step 19
+   Reached terminal node at step 15
+Episode 60/100...
+   Reached terminal node at step 13
+   Reached terminal node at step 13
+   Reached terminal node at step 20
+   Reached terminal node at step 9
+   Reached terminal node at step 4
+   Reached terminal node at step 18
+   Reached terminal node at step 10
+   Reached terminal node at step 14
+   Reached terminal node at step 16
+   Reached terminal node at step 14
+Episode 70/100...
+   Reached terminal node at step 17
+   Reached terminal node at step 11
+   Reached terminal node at step 4
+   Reached terminal node at step 14
+   Reached terminal node at step 11
+   Reached terminal node at step 15
+   Reached terminal node at step 16
+   Reached terminal node at step 16
+   Reached terminal node at step 19
+   Reached terminal node at step 19
+Episode 80/100...
+   Reached terminal node at step 20
+   Reached terminal node at step 16
+   Reached terminal node at step 15
+   Reached terminal node at step 18
+   Reached terminal node at step 20
+   Reached terminal node at step 21
+   Reached terminal node at step 20
+   Reached terminal node at step 16
+   Reached terminal node at step 15
+   Reached terminal node at step 10
+Episode 90/100...
+   Reached terminal node at step 15
+   Reached terminal node at step 20
+   Reached terminal node at step 20
+   Reached terminal node at step 21
+   Reached terminal node at step 15
+   Reached terminal node at step 7
+   Reached terminal node at step 22
+   Reached terminal node at step 19
+   Reached terminal node at step 18
+   Reached terminal node at step 11
+Saved estimated data to results/sir_prevalence_only_5_standard/experiment_low_noise/estimated_data.csv
+Time taken: 15652.09 seconds (260.87 min, 4.35 hr)
+
+Finished sir_prevalence_only_5_standard/experiment_low_noise. Results saved to results/sir_prevalence_only_5_standard/experiment_low_noise
+Finished sir_prevalence_only_5_standard/experiment_low_noise
+   Reached terminal node at step 9
+   Reached terminal node at step 15
+   Reached terminal node at step 15
+   Reached terminal node at step 3
+   Reached terminal node at step 15
+   Reached terminal node at step 14
+   Reached terminal node at step 18
+   Reached terminal node at step 2
+   Reached terminal node at step 3
+   Reached terminal node at step 9
+Episode 10/100...
+   Reached terminal node at step 12
+   Reached terminal node at step 3
+   Reached terminal node at step 3
+   Reached terminal node at step 2
+   Reached terminal node at step 3
+   Reached terminal node at step 18
+   Reached terminal node at step 18
+   Reached terminal node at step 18
+   Reached terminal node at step 20
+   Reached terminal node at step 20
+Episode 20/100...
+   Reached terminal node at step 20
+   Reached terminal node at step 17
+   Reached terminal node at step 23
+   Reached terminal node at step 11
+   Reached terminal node at step 13
+   Reached terminal node at step 15
+   Reached terminal node at step 14
+   Reached terminal node at step 3
+   Reached terminal node at step 21
+   Reached terminal node at step 21
+Episode 30/100...
+   Reached terminal node at step 18
+   Reached terminal node at step 20
+   Reached terminal node at step 9
+   Reached terminal node at step 3
+   Reached terminal node at step 18
+   Reached terminal node at step 12
+   Reached terminal node at step 3
+   Reached terminal node at step 20
+   Reached terminal node at step 20
+   Reached terminal node at step 16
+Episode 40/100...
+   Reached terminal node at step 17
+   Reached terminal node at step 14
+   Reached terminal node at step 11
+   Reached terminal node at step 21
+   Reached terminal node at step 3
+   Reached terminal node at step 22
+   Reached terminal node at step 14
+   Reached terminal node at step 20
+   Reached terminal node at step 20
+   Reached terminal node at step 16
+Episode 50/100...
+   Reached terminal node at step 16
+   Reached terminal node at step 13
+   Reached terminal node at step 15
+   Reached terminal node at step 14
+   Reached terminal node at step 20
+   Reached terminal node at step 19
+   Reached terminal node at step 13
+   Reached terminal node at step 18
+   Reached terminal node at step 20
+   Reached terminal node at step 17
+Episode 60/100...
+   Reached terminal node at step 13
+   Reached terminal node at step 14
+   Reached terminal node at step 20
+   Reached terminal node at step 13
+   Reached terminal node at step 8
+   Reached terminal node at step 21
+   Reached terminal node at step 13
+   Reached terminal node at step 3
+   Reached terminal node at step 13
+   Reached terminal node at step 20
+Episode 70/100...
+   Reached terminal node at step 3
+   Reached terminal node at step 19
+   Reached terminal node at step 4
+   Reached terminal node at step 19
+   Reached terminal node at step 17
+   Reached terminal node at step 20
+   Reached terminal node at step 3
+   Reached terminal node at step 13
+   Reached terminal node at step 15
+   Reached terminal node at step 17
+Episode 80/100...
+   Reached terminal node at step 17
+   Reached terminal node at step 20
+   Reached terminal node at step 17
+   Reached terminal node at step 17
+   Reached terminal node at step 13
+   Reached terminal node at step 9
+   Reached terminal node at step 20
+   Reached terminal node at step 7
+   Reached terminal node at step 21
+   Reached terminal node at step 24
+Episode 90/100...
+   Reached terminal node at step 17
+   Reached terminal node at step 4
+   Reached terminal node at step 21
+   Reached terminal node at step 12
+   Reached terminal node at step 4
+   Reached terminal node at step 19
+   Reached terminal node at step 20
+   Reached terminal node at step 19
+   Reached terminal node at step 19
+   Reached terminal node at step 22
+Saved estimated data to results/sir_both_5_standard/experiment_high_noise/estimated_data.csv
+Time taken: 17843.48 seconds (297.39 min, 4.96 hr)
+
+Finished sir_both_5_standard/experiment_high_noise. Results saved to results/sir_both_5_standard/experiment_high_noise
+Finished sir_both_5_standard/experiment_high_noise
+   Reached terminal node at step 10
+   Reached terminal node at step 12
+   Reached terminal node at step 8
+   Reached terminal node at step 21
+   Reached terminal node at step 12
+   Reached terminal node at step 17
+   Reached terminal node at step 18
+   Reached terminal node at step 6
+   Reached terminal node at step 12
+   Reached terminal node at step 3
+Episode 10/100...
+   Reached terminal node at step 20
+   Reached terminal node at step 3
+   Reached terminal node at step 2
+   Reached terminal node at step 2
+   Reached terminal node at step 11
+   Reached terminal node at step 15
+   Reached terminal node at step 17
+   Reached terminal node at step 21
+   Reached terminal node at step 24
+   Reached terminal node at step 3
+Episode 20/100...
+   Reached terminal node at step 15
+   Reached terminal node at step 3
+   Reached terminal node at step 19
+   Reached terminal node at step 3
+   Reached terminal node at step 11
+   Reached terminal node at step 17
+   Reached terminal node at step 16
+   Reached terminal node at step 19
+   Reached terminal node at step 8
+   Reached terminal node at step 20
+Episode 30/100...
+   Reached terminal node at step 19
+   Reached terminal node at step 12
+   Reached terminal node at step 12
+   Reached terminal node at step 5
+   Reached terminal node at step 13
+   Reached terminal node at step 3
+   Reached terminal node at step 3
+   Reached terminal node at step 16
+   Reached terminal node at step 3
+   Reached terminal node at step 14
+Episode 40/100...
+   Reached terminal node at step 19
+   Reached terminal node at step 15
+   Reached terminal node at step 14
+   Reached terminal node at step 17
+   Reached terminal node at step 3
+   Reached terminal node at step 17
+   Reached terminal node at step 15
+   Reached terminal node at step 17
+   Reached terminal node at step 4
+   Reached terminal node at step 12
+Episode 50/100...
+   Reached terminal node at step 13
+   Reached terminal node at step 21
+   Reached terminal node at step 12
+   Reached terminal node at step 16
+   Reached terminal node at step 13
+   Reached terminal node at step 14
+   Reached terminal node at step 22
+   Reached terminal node at step 19
+   Reached terminal node at step 22
+   Reached terminal node at step 19
+Episode 60/100...
+   Reached terminal node at step 19
+   Reached terminal node at step 23
+   Reached terminal node at step 16
+   Reached terminal node at step 9
+   Reached terminal node at step 20
+   Reached terminal node at step 19
+   Reached terminal node at step 9
+   Reached terminal node at step 21
+   Reached terminal node at step 11
+   Reached terminal node at step 17
+Episode 70/100...
+   Reached terminal node at step 21
+   Reached terminal node at step 10
+   Reached terminal node at step 8
+   Reached terminal node at step 11
+   Reached terminal node at step 14
+   Reached terminal node at step 18
+   Reached terminal node at step 21
+   Reached terminal node at step 13
+   Reached terminal node at step 19
+   Reached terminal node at step 18
+Episode 80/100...
+   Reached terminal node at step 15
+   Reached terminal node at step 17
+   Reached terminal node at step 19
+   Reached terminal node at step 20
+   Reached terminal node at step 20
+   Reached terminal node at step 19
+   Reached terminal node at step 14
+   Reached terminal node at step 13
+   Reached terminal node at step 16
+   Reached terminal node at step 13
+Episode 90/100...
+   Reached terminal node at step 13
+   Reached terminal node at step 20
+   Reached terminal node at step 12
+   Reached terminal node at step 17
+   Reached terminal node at step 18
+   Reached terminal node at step 13
+   Reached terminal node at step 17
+   Reached terminal node at step 16
+   Reached terminal node at step 20
+   Reached terminal node at step 23
+Saved estimated data to results/sir_both_5_standard/experiment_no_noise/estimated_data.csv
+Time taken: 17905.99 seconds (298.43 min, 4.97 hr)
+
+Finished sir_both_5_standard/experiment_no_noise. Results saved to results/sir_both_5_standard/experiment_no_noise
+Finished sir_both_5_standard/experiment_no_noise
+   Reached terminal node at step 19
+   Reached terminal node at step 19
+   Reached terminal node at step 20
+   Reached terminal node at step 3
+   Reached terminal node at step 15
+   Reached terminal node at step 19
+   Reached terminal node at step 3
+   Reached terminal node at step 10
+   Reached terminal node at step 20
+   Reached terminal node at step 2
+Episode 10/100...
+   Reached terminal node at step 4
+   Reached terminal node at step 21
+   Reached terminal node at step 19
+   Reached terminal node at step 7
+   Reached terminal node at step 21
+   Reached terminal node at step 2
+   Reached terminal node at step 15
+   Reached terminal node at step 16
+   Reached terminal node at step 21
+   Reached terminal node at step 17
+Episode 20/100...
+   Reached terminal node at step 17
+   Reached terminal node at step 19
+   Reached terminal node at step 14
+   Reached terminal node at step 3
+   Reached terminal node at step 18
+   Reached terminal node at step 21
+   Reached terminal node at step 10
+   Reached terminal node at step 12
+   Reached terminal node at step 15
+   Reached terminal node at step 15
+Episode 30/100...
+   Reached terminal node at step 16
+   Reached terminal node at step 15
+   Reached terminal node at step 3
+   Reached terminal node at step 20
+   Reached terminal node at step 8
+   Reached terminal node at step 14
+   Reached terminal node at step 16
+   Reached terminal node at step 10
+   Reached terminal node at step 3
+   Reached terminal node at step 3
+Episode 40/100...
+   Reached terminal node at step 20
+   Reached terminal node at step 15
+   Reached terminal node at step 13
+   Reached terminal node at step 4
+   Reached terminal node at step 12
+   Reached terminal node at step 18
+   Reached terminal node at step 19
+   Reached terminal node at step 5
+   Reached terminal node at step 21
+   Reached terminal node at step 20
+Episode 50/100...
+   Reached terminal node at step 18
+   Reached terminal node at step 15
+   Reached terminal node at step 12
+   Reached terminal node at step 11
+   Reached terminal node at step 21
+   Reached terminal node at step 14
+   Reached terminal node at step 23
+   Reached terminal node at step 13
+   Reached terminal node at step 14
+   Reached terminal node at step 19
+Episode 60/100...
+   Reached terminal node at step 23
+   Reached terminal node at step 21
+   Reached terminal node at step 16
+   Reached terminal node at step 9
+   Reached terminal node at step 19
+   Reached terminal node at step 5
+   Reached terminal node at step 12
+   Reached terminal node at step 19
+   Reached terminal node at step 19
+   Reached terminal node at step 11
+Episode 70/100...
+   Reached terminal node at step 17
+   Reached terminal node at step 13
+   Reached terminal node at step 8
+   Reached terminal node at step 19
+   Reached terminal node at step 20
+   Reached terminal node at step 14
+   Reached terminal node at step 12
+   Reached terminal node at step 14
+   Reached terminal node at step 19
+   Reached terminal node at step 19
+Episode 80/100...
+   Reached terminal node at step 23
+   Reached terminal node at step 17
+   Reached terminal node at step 16
+   Reached terminal node at step 14
+   Reached terminal node at step 13
+   Reached terminal node at step 20
+   Reached terminal node at step 20
+   Reached terminal node at step 19
+   Reached terminal node at step 11
+   Reached terminal node at step 17
+Episode 90/100...
+   Reached terminal node at step 15
+   Reached terminal node at step 17
+   Reached terminal node at step 21
+   Reached terminal node at step 17
+   Reached terminal node at step 6
+   Reached terminal node at step 20
+   Reached terminal node at step 15
+   Reached terminal node at step 21
+   Reached terminal node at step 14
+   Reached terminal node at step 11
+Saved estimated data to results/sir_prevalence_only_5_standard/experiment_no_noise/estimated_data.csv
+Time taken: 19115.57 seconds (318.59 min, 5.31 hr)
+
+Finished sir_prevalence_only_5_standard/experiment_no_noise. Results saved to results/sir_prevalence_only_5_standard/experiment_no_noise
+Finished sir_prevalence_only_5_standard/experiment_no_noise
+   Reached terminal node at step 21
+   Reached terminal node at step 18
+   Reached terminal node at step 21
+   Reached terminal node at step 11
+   Reached terminal node at step 15
+   Reached terminal node at step 25
+   Reached terminal node at step 10
+   Reached terminal node at step 14
+   Reached terminal node at step 18
+   Reached terminal node at step 3
+Episode 10/100...
+   Reached terminal node at step 2
+   Reached terminal node at step 2
+   Reached terminal node at step 3
+   Reached terminal node at step 3
+   Reached terminal node at step 18
+   Reached terminal node at step 13
+   Reached terminal node at step 5
+   Reached terminal node at step 15
+   Reached terminal node at step 10
+   Reached terminal node at step 21
+Episode 20/100...
+   Reached terminal node at step 18
+   Reached terminal node at step 3
+   Reached terminal node at step 15
+   Reached terminal node at step 13
+   Reached terminal node at step 3
+   Reached terminal node at step 19
+   Reached terminal node at step 17
+   Reached terminal node at step 11
+   Reached terminal node at step 13
+   Reached terminal node at step 19
+Episode 30/100...
+   Reached terminal node at step 3
+   Reached terminal node at step 12
+   Reached terminal node at step 5
+   Reached terminal node at step 11
+   Reached terminal node at step 21
+   Reached terminal node at step 25
+   Reached terminal node at step 8
+   Reached terminal node at step 5
+   Reached terminal node at step 3
+   Reached terminal node at step 19
+Episode 40/100...
+   Reached terminal node at step 5
+   Reached terminal node at step 9
+   Reached terminal node at step 12
+   Reached terminal node at step 9
+   Reached terminal node at step 12
+   Reached terminal node at step 19
+   Reached terminal node at step 14
+   Reached terminal node at step 13
+   Reached terminal node at step 11
+   Reached terminal node at step 13
+Episode 50/100...
+   Reached terminal node at step 11
+   Reached terminal node at step 13
+   Reached terminal node at step 21
+   Reached terminal node at step 3
+   Reached terminal node at step 19
+   Reached terminal node at step 24
+   Reached terminal node at step 18
+   Reached terminal node at step 13
+   Reached terminal node at step 13
+   Reached terminal node at step 14
+Episode 60/100...
+   Reached terminal node at step 4
+   Reached terminal node at step 14
+   Reached terminal node at step 13
+   Reached terminal node at step 12
+   Reached terminal node at step 19
+   Reached terminal node at step 14
+   Reached terminal node at step 9
+   Reached terminal node at step 18
+   Reached terminal node at step 17
+   Reached terminal node at step 5
+Episode 70/100...
+   Reached terminal node at step 20
+   Reached terminal node at step 21
+   Reached terminal node at step 18
+   Reached terminal node at step 12
+   Reached terminal node at step 13
+   Reached terminal node at step 15
+   Reached terminal node at step 11
+   Reached terminal node at step 19
+   Reached terminal node at step 4
+   Reached terminal node at step 21
+Episode 80/100...
+   Reached terminal node at step 14
+   Reached terminal node at step 17
+   Reached terminal node at step 11
+   Reached terminal node at step 22
+   Reached terminal node at step 21
+   Reached terminal node at step 12
+   Reached terminal node at step 19
+   Reached terminal node at step 19
+   Reached terminal node at step 3
+   Reached terminal node at step 14
+Episode 90/100...
+   Reached terminal node at step 13
+   Reached terminal node at step 13
+Constant optimisation failed, returning high error
+   Reached terminal node at step 21
+   Reached terminal node at step 18
+   Reached terminal node at step 13
+   Reached terminal node at step 13
+   Reached terminal node at step 14
+   Reached terminal node at step 20
+   Reached terminal node at step 17
+   Reached terminal node at step 10
+Saved estimated data to results/sir_prevalence_only_5_standard/experiment_high_noise/estimated_data.csv
+Time taken: 19359.05 seconds (322.65 min, 5.38 hr)
+
+Finished sir_prevalence_only_5_standard/experiment_high_noise. Results saved to results/sir_prevalence_only_5_standard/experiment_high_noise
+Finished sir_prevalence_only_5_standard/experiment_high_noise
+   Reached terminal node at step 10
+   Reached terminal node at step 22
+   Reached terminal node at step 13
+   Reached terminal node at step 14
+   Reached terminal node at step 21
+   Reached terminal node at step 17
+   Reached terminal node at step 11
+   Reached terminal node at step 3
+   Reached terminal node at step 2
+   Reached terminal node at step 24
+Episode 10/100...
+   Reached terminal node at step 3
+   Reached terminal node at step 3
+   Reached terminal node at step 12
+   Reached terminal node at step 2
+   Reached terminal node at step 23
+   Reached terminal node at step 17
+   Reached terminal node at step 7
+   Reached terminal node at step 7
+   Reached terminal node at step 13
+   Reached terminal node at step 3
+Episode 20/100...
+   Reached terminal node at step 18
+   Reached terminal node at step 15
+   Reached terminal node at step 15
+   Reached terminal node at step 19
+   Reached terminal node at step 20
+   Reached terminal node at step 3
+   Reached terminal node at step 21
+   Reached terminal node at step 17
+   Reached terminal node at step 16
+   Reached terminal node at step 9
+Episode 30/100...
+   Reached terminal node at step 18
+   Reached terminal node at step 12
+   Reached terminal node at step 14
+   Reached terminal node at step 20
+   Reached terminal node at step 21
+   Reached terminal node at step 14
+   Reached terminal node at step 16
+   Reached terminal node at step 13
+   Reached terminal node at step 4
+   Reached terminal node at step 18
+Episode 40/100...
+   Reached terminal node at step 14
+   Reached terminal node at step 16
+   Reached terminal node at step 11
+   Reached terminal node at step 10
+   Reached terminal node at step 7
+   Reached terminal node at step 8
+   Reached terminal node at step 15
+   Reached terminal node at step 9
+   Reached terminal node at step 19
+   Reached terminal node at step 21
+Episode 50/100...
+   Reached terminal node at step 18
+   Reached terminal node at step 23
+   Reached terminal node at step 16
+   Reached terminal node at step 14
+   Reached terminal node at step 19
+   Reached terminal node at step 9
+   Reached terminal node at step 17
+   Reached terminal node at step 21
+   Reached terminal node at step 11
+   Reached terminal node at step 19
+Episode 60/100...
+   Reached terminal node at step 13
+   Reached terminal node at step 16
+   Reached terminal node at step 14
+   Reached terminal node at step 22
+   Reached terminal node at step 20
+   Reached terminal node at step 19
+   Reached terminal node at step 17
+   Reached terminal node at step 14
+   Reached terminal node at step 3
+   Reached terminal node at step 9
+Episode 70/100...
+   Reached terminal node at step 19
+   Reached terminal node at step 20
+   Reached terminal node at step 15
+   Reached terminal node at step 19
+   Reached terminal node at step 23
+   Reached terminal node at step 23
+   Reached terminal node at step 20
+   Reached terminal node at step 19
+   Reached terminal node at step 21
+   Reached terminal node at step 15
+Episode 80/100...
+   Reached terminal node at step 21
+   Reached terminal node at step 21
+   Reached terminal node at step 14
+   Reached terminal node at step 16
+   Reached terminal node at step 12
+   Reached terminal node at step 24
+   Reached terminal node at step 16
+   Reached terminal node at step 9
+   Reached terminal node at step 17
+   Reached terminal node at step 18
+Episode 90/100...
+   Reached terminal node at step 16
+   Reached terminal node at step 22
+   Reached terminal node at step 15
+   Reached terminal node at step 19
+   Reached terminal node at step 19
+   Reached terminal node at step 23
+   Reached terminal node at step 17
+   Reached terminal node at step 15
+   Reached terminal node at step 18
+   Reached terminal node at step 19
+Saved estimated data to results/sir_both_5_standard/experiment_low_noise/estimated_data.csv
+Time taken: 22016.95 seconds (366.95 min, 6.12 hr)
+
+Finished sir_both_5_standard/experiment_low_noise. Results saved to results/sir_both_5_standard/experiment_low_noise
+Finished sir_both_5_standard/experiment_low_noise
