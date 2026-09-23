@@ -1,3 +1,0 @@
-Time taken (seconds): 17843.48
-Time taken (minutes): 297.39
-Time taken (hours): 4.96
