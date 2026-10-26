@@ -12,7 +12,7 @@ def estimation_saving(
     top_str_fluxes: list[str],
     states: list[str],
     state_variables: list[sympy.Symbol],
-    initial_conditions_base: list[float],
+    initial_conditions_matrix: np.ndarray,
     times: np.ndarray,
     system_structure: dict[str, list[int]],
     save_dir: str,
@@ -23,7 +23,8 @@ def estimation_saving(
         top_str_fluxes (list[str]): Flux expressions in string format (from the top solution).
         states (list[str]): List of state variable names.
         state_variables (list[sympy.Symbol]): SymPy symbols representing the state variables.
-        initial_conditions_base (list[float]): Initial conditions for the state variables.
+        initial_conditions_matrix (np.ndarray): Initial-condition matrix with shape
+            (num_states, num_realisations).
         times (np.ndarray): Array of time points.
         system_structure (dict[str, list[int]]): Stoichiometry.
         save_dir (str): Directory where the estimated data will be saved.
@@ -52,16 +53,36 @@ def estimation_saving(
         """Calculate derivative for given states."""
         return [dot_funcs[state](*y) for state in states]
 
-    # Simulate the system using the found equations and clean initial conditions
-    estimated_sol = odeint(estimated_system, initial_conditions_base, times)
+    if initial_conditions_matrix.shape[0] != len(states):
+        raise ValueError("Initial-condition matrix does not match the state count.")
 
-    # Store the estimated state trajectories
+    estimated_solutions = []
+    for realisation in range(initial_conditions_matrix.shape[1]):
+        estimated_solutions.append(
+            odeint(
+                estimated_system,
+                initial_conditions_matrix[:, realisation],
+                times,
+            )
+        )
+    estimated_sol = np.stack(estimated_solutions, axis=-1)
+
+    # Store estimated trajectories for every realisation.
     estimated_data = {"time": times}
     for idx, state in enumerate(states):
-        estimated_data[f"estimated_{state.upper()}"] = estimated_sol[:, idx]
+        for realisation in range(estimated_sol.shape[2]):
+            estimated_data[f"estimated_{state.upper()}_{realisation}"] = estimated_sol[
+                :, idx, realisation
+            ]
 
     estimated_df = pd.DataFrame(estimated_data)
     estimated_df.to_csv(f"{save_dir}/estimated_data.csv", index=False)
+    np.save(f"{save_dir}/estimated_initial_conditions.npy", initial_conditions_matrix)
+    initial_conditions_df = pd.DataFrame(
+        initial_conditions_matrix.T, columns=[f"initial_{state}" for state in states]
+    )
+    initial_conditions_df.index.name = "realisation"
+    initial_conditions_df.to_csv(f"{save_dir}/estimated_initial_conditions.csv")
     print(f"Saved estimated data to {save_dir}/estimated_data.csv")
 
 

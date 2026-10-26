@@ -102,7 +102,7 @@ class MCGS:
             state_variables=self.state_var_list,
             state_to_variable=self.state_to_variable,
             time_array=self.time_array,
-            initial_conditions_matrix=self.initial_conditions_matrix,
+            initial_conditions_matrix=self.initial_conditions_matrix,  # May be None
             observations=self.observations,
             obs_keys=self.obs_keys,
             temperature=temperature,
@@ -135,18 +135,26 @@ class MCGS:
         # Time vector: assumption = realisations share the same time steps.
         self.time_array = data_X[0]["time"]
 
-        # Initial conditions matrix: shape (num_states, num_realisations)
-        # NOTE: We assume the initial conditions are provided for all state variables
-        # in the same order as self.state_keys.
-        initial_conditions = [np.array(data["initial_conditions"]) for data in data_X]
-        self.initial_conditions_matrix = np.vstack(initial_conditions).T
+        # Check if initial conditions are present in the data_X dictionaries
+        if "initial_conditions" in data_X[0]:
+            # Initial conditions matrix: shape (num_states, num_realisations)
+            # NOTE: We assume the initial conditions are provided for all state variables
+            # in the same order as self.state_keys.
+            initial_conditions = [
+                np.array(data["initial_conditions"]) for data in data_X
+            ]
+            self.initial_conditions_matrix = np.vstack(initial_conditions).T
+        else:
+            # We need to estimate initial conditions
+            print("Initial conditions require estimation...")
+            self.initial_conditions_matrix = None
 
         # Store observations in a dict of arrays: {obs_key: np.array}
         self.observations = {}
         for key in self.obs_keys:
             self.observations[key] = np.stack(
                 [data["states"][key] for data in self.data_X], axis=-1
-            )
+            )  # Shape: (num_time_points, num_realisations)
 
     def initialise_grammar_probabilities(self):
         """

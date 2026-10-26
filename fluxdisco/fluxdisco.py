@@ -118,7 +118,13 @@ def run_fluxdisco(
     reward_cache_df = pd.DataFrame(reward_cache)
     if not reward_cache_df.empty:
         reward_cache_df = reward_cache_df[
-            ["rank", "reward", "equations", "equations_with_constants"]
+            [
+                "rank",
+                "reward",
+                "equations",
+                "equations_with_constants",
+                "initial_conditions",
+            ]
         ]
         reward_cache_df.to_csv(os.path.join(run_dir, "full_results.csv"), index=False)
 
@@ -127,13 +133,21 @@ def run_fluxdisco(
         top_str_fluxes = top_results[0][2]
         try:
             base_times = data[0]["time"]
-            base_initial_conditions = data[0]["initial_conditions"]
+            initial_conditions_matrix = (
+                search_graph.reward_calculator.get_initial_conditions_for_result(
+                    top_str_fluxes
+                )
+            )
+            if initial_conditions_matrix is None:
+                raise ValueError(
+                    "No initial conditions were stored for the top result."
+                )
 
             estimation_saving(
                 states=system_config["states"],
                 state_variables=system_config["state_variables"],
                 top_str_fluxes=top_str_fluxes,
-                initial_conditions_base=base_initial_conditions,
+                initial_conditions_matrix=initial_conditions_matrix,
                 times=base_times,
                 system_structure=system_config["system_structure"],
                 save_dir=run_dir,

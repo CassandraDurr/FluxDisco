@@ -1,5 +1,6 @@
 """Reward calculation utilities for FluxDisco."""
 
+import json
 import math
 import typing
 
@@ -59,7 +60,7 @@ class RewardCalculator:
         state_to_variable: dict[str, sympy.Symbol],
         state_keys: list[str],
         time_array: np.ndarray,
-        initial_conditions_matrix: np.ndarray,
+        initial_conditions_matrix: np.ndarray | None,
         observations: dict[str, np.ndarray],
         obs_keys: list[str],
         n_term: str = "max",
@@ -110,6 +111,7 @@ class RewardCalculator:
 
         # Reward cache to save time
         self.reward_cache = {}
+        self.initial_conditions_cache: dict[tuple[str, ...], np.ndarray] = {}
 
         # Normalisation of reward
         self.normalise_reward = normalise_reward
@@ -123,6 +125,25 @@ class RewardCalculator:
             for key in self.obs_keys:
                 if self.weights[key] == 0:
                     self.weights[key] = 1.0
+
+        # Number of realisations
+        if self.initial_conditions_matrix is not None:
+            self.num_realisations = self.initial_conditions_matrix.shape[1]
+        else:
+            for key in self.obs_keys:
+                if self.observations[key].ndim == 2:
+                    self.num_realisations = self.observations[key].shape[1]
+                    break
+                else:
+                    raise ValueError(
+                        f"Observation '{key}' does not have the expected shape."
+                    )
+
+        # Check if there are initial conditions requiring estimation
+        if self.initial_conditions_matrix is None:
+            self.estimated_initial_conditions = self.initial_conditions_for_estimation()
+        else:
+            self.estimated_initial_conditions = {}
 
     def build_expressions(self, flux_action_lists: list[list[str]]) -> list[sympy.Expr]:
         """Build expressions for each flux in a list of action lists."""
@@ -142,6 +163,54 @@ class RewardCalculator:
             const_count += len(consts)
 
         return flux_exprs
+
+    def initial_conditions_for_estimation(self):
+        """Generate the names of initial conditions to be estimated."""
+        if self.state_keys == ["s", "i", "r"]:
+            return [f"i0_{realisation}" for realisation in range(self.num_realisations)]
+        return [
+            f"{state}_{realisation}"
+            for realisation in range(self.num_realisations)
+            for state in self.state_keys
+        ]
+
+    def build_initial_conditions_matrix(
+        self, initial_condition_values: typing.Mapping[str, float]
+    ) -> np.ndarray:
+        """Build an ODE-solver initial-condition matrix from fitted values."""
+        if self.state_keys == ["s", "i", "r"]:
+            initial_conditions = [
+                [
+                    1.0 - initial_condition_values[f"i0_{realisation}"],
+                    initial_condition_values[f"i0_{realisation}"],
+                    0.0,
+                ]
+                for realisation in range(self.num_realisations)
+            ]
+        else:
+            initial_conditions = [
+                [
+                    initial_condition_values[f"{state}_{realisation}"]
+                    for state in self.state_keys
+                ]
+                for realisation in range(self.num_realisations)
+            ]
+        return np.asarray(initial_conditions, dtype=float).T
+
+    def split_optimisation_values(
+        self, c_values: np.ndarray, num_model_constants: int
+    ) -> tuple[np.ndarray, np.ndarray | None]:
+        """Split estimated model constants from estimated initial conditions."""
+        model_constants = np.asarray(c_values[:num_model_constants], dtype=float)
+        if not self.estimated_initial_conditions:
+            return model_constants, None
+        initial_values = c_values[num_model_constants:]
+        initial_condition_values = dict(
+            zip(self.estimated_initial_conditions, initial_values)
+        )
+        return model_constants, self.build_initial_conditions_matrix(
+            initial_condition_values
+        )
 
     def check_invalid_constant_flux(self, flux_exprs: list[sympy.Expr]) -> bool:
         """Check if any flux expression is a constant with no state variables."""
@@ -243,6 +312,18 @@ class RewardCalculator:
                 reward,
                 (folded_flux_exprs, final_flux_strs),
             )
+            if self.initial_conditions_matrix is not None:
+                fitted_initial_conditions = self.initial_conditions_matrix.copy()
+            elif optimal_const_values.size > 0:
+                fitted_initial_conditions = self._split_optimisation_values(
+                    optimal_const_values, len(all_consts)
+                )[1]
+            else:
+                fitted_initial_conditions = None
+            if fitted_initial_conditions is not None:
+                self.initial_conditions_cache[tuple(final_flux_strs)] = (
+                    fitted_initial_conditions.copy()
+                )
 
             if return_details:
                 # Also return details of the equation form
@@ -269,7 +350,11 @@ class RewardCalculator:
         Returns:
             tuple[float, np.ndarray]: (best_rmse, optimal_const_values)
         """
-        num_consts = len(consts)
+        num_model_consts = len(consts)
+        num_consts = num_model_consts
+        # Add in the initial conditions for estimation if they exist
+        if self.estimated_initial_conditions:
+            num_consts += len(self.estimated_initial_conditions)
 
         # Ordered state equations
         ordered_eqs = [system_eqs[key] for key in self.state_keys]
@@ -322,26 +407,50 @@ class RewardCalculator:
         best_total_error = math.inf
         optimal_const_values = np.array([])
 
-        # Sobol sampler to cover search space more efficiently
-        sampler = qmc.Sobol(
-            d=num_consts, scramble=True
-        )  # Scramble adds a bit of randomness
-        sample = sampler.random(n=self.max_inner_workers)
-        # Scale and transform to log-space
-        log_samples = qmc.scale(sample, -4, 2)
-        starting_guesses = 10**log_samples
+        # Sobol sampler for original consts
+        if consts:
+            sampler = qmc.Sobol(
+                d=len(consts), scramble=True
+            )  # Scramble adds a bit of randomness
+            sample = sampler.random(n=self.max_inner_workers)
+            # Scale and transform to log-space
+            log_samples = qmc.scale(sample, -4, 2)
+            starting_guesses = 10**log_samples
+        else:
+            starting_guesses = np.empty((self.max_inner_workers, 0))
+        # Add starting guesses for estimated initial conditions (if any)
+        if self.estimated_initial_conditions:
+            init_cond_guesses = np.full(
+                (self.max_inner_workers, len(self.estimated_initial_conditions)),
+                0.1,
+            )
+            if self.state_keys == ["s", "i", "r"] and "prevalence" in self.observations:
+                prevalence_at_start = np.clip(
+                    self.observations["prevalence"][0], 0.001, 0.999
+                )
+                init_cond_guesses = np.tile(
+                    prevalence_at_start, (self.max_inner_workers, 1)
+                )
+            starting_guesses = np.hstack((starting_guesses, init_cond_guesses))
 
         def const_opt(
             starting_guesses: np.ndarray,
         ) -> tuple[float, np.ndarray | None]:
             try:
+                lower_bounds = np.full(num_consts, -np.inf)
+                upper_bounds = np.full(num_consts, np.inf)
+                if self.estimated_initial_conditions:
+                    lower_bounds[:num_model_consts] = 0.0
+                    upper_bounds[num_model_consts:] = 1.0
+
                 # Trust region least squares optimisation from starting point
                 res = least_squares(
                     fun=self.get_residuals,
                     x0=starting_guesses,
-                    args=args_tuple,
+                    args=args_tuple + (None, num_model_consts),
                     method="trf",
                     ftol=1e-5,
+                    bounds=(lower_bounds, upper_bounds),
                 )
 
                 if not res.success:
@@ -384,6 +493,13 @@ class RewardCalculator:
             return 1e6, np.array([0.01] * num_consts)
 
         return best_total_error, optimal_const_values
+
+    def get_initial_conditions_for_result(self, fluxes: list[str]) -> np.ndarray | None:
+        """Return the fitted initial-condition matrix for a result."""
+        initial_conditions = self.initial_conditions_cache.get(tuple(fluxes))
+        if initial_conditions is None:
+            return None
+        return initial_conditions.copy()
 
     def extract_predictions(
         self,
@@ -484,6 +600,8 @@ class RewardCalculator:
         c_values: np.ndarray,
         vectorised_ode_func: callable,
         lambdified_fluxes: dict,
+        initial_conditions_matrix: np.ndarray | None = None,
+        num_model_constants: int | None = None,
     ) -> dict[str, np.ndarray] | None:
         """Get model predictions by combining constants and candidate expressions, then solve ODEs.
 
@@ -498,6 +616,21 @@ class RewardCalculator:
         Returns:
             dict[str, np.ndarray] | None: None if there was an error, otherwise return predictions.
         """
+        if num_model_constants is not None:
+            c_values, estimated_matrix = self.split_optimisation_values(
+                c_values, num_model_constants
+            )
+            if estimated_matrix is not None:
+                initial_conditions_matrix = estimated_matrix
+
+        # If no initial conditions are provided in arguments, use the default matrix.
+        if initial_conditions_matrix is None:
+            initial_conditions_matrix = self.initial_conditions_matrix
+        if initial_conditions_matrix is None:
+            raise ValueError(
+                "Initial conditions matrix must be provided in arguments or during initialisation."
+            )
+
         c_args = tuple(c_values)
 
         # Create a callable function for the ODE solver
@@ -514,14 +647,14 @@ class RewardCalculator:
             if self.solver_method == "euler":
                 pred_traj_tensor = euler_method(
                     func=ode_func,
-                    initial_conditions_matrix=self.initial_conditions_matrix,
+                    initial_conditions_matrix=initial_conditions_matrix,
                     times=self.time_array,
                     args=c_args,
                 )
             elif self.solver_method == "rk4":
                 pred_traj_tensor = rk4_method(
                     func=ode_func,
-                    initial_conditions_matrix=self.initial_conditions_matrix,
+                    initial_conditions_matrix=initial_conditions_matrix,
                     times=self.time_array,
                     args=c_args,
                 )
@@ -553,6 +686,7 @@ class RewardCalculator:
         vectorised_ode_func: callable,
         lambdified_fluxes: dict,
         residuals: np.ndarray | None = None,
+        num_model_constants: int | None = None,
     ) -> float:
         """
         MSE calculation using observed and predicted trajectories.
@@ -564,14 +698,13 @@ class RewardCalculator:
         # If we have residuals (from least squares), calculate MSE from these
         # SSE is related to error function in reward
         if residuals is not None:
-            num_realisations = self.initial_conditions_matrix.shape[1]
-            mse_per_real = np.zeros(num_realisations)
+            mse_per_real = np.zeros(self.num_realisations)
 
             current_idx = 0
             for obs_key in self.obs_keys:
                 # Expected array length for this observation key
                 num_times_feat = self.observations[obs_key].shape[0]
-                total_elements = num_times_feat * num_realisations
+                total_elements = num_times_feat * self.num_realisations
 
                 # Slice out the portion of residuals from this observation key
                 # If normalising, these residuals are already scaled
@@ -580,7 +713,7 @@ class RewardCalculator:
                 ]
                 # Reshape to (num_times, num_realisations)
                 feat_residuals = feat_residuals.reshape(
-                    num_times_feat, num_realisations
+                    num_times_feat, self.num_realisations
                 )
 
                 # Calculate MSE for this feature
@@ -599,6 +732,7 @@ class RewardCalculator:
             c_values=c_values,
             vectorised_ode_func=vectorised_ode_func,
             lambdified_fluxes=lambdified_fluxes,
+            num_model_constants=num_model_constants,
         )
 
         if predictions is None:
@@ -606,7 +740,7 @@ class RewardCalculator:
             return failure_penalty
 
         # MSE over time per realisation
-        mse_per_real = np.zeros(predictions[self.obs_keys[0]].shape[1])
+        mse_per_real = np.zeros(self.num_realisations)
         for obs_key in self.obs_keys:
             # Residuals
             obs_residuals = predictions[obs_key] - self.observations[obs_key]
@@ -636,7 +770,12 @@ class RewardCalculator:
         return avg_total_mse
 
     def get_residuals(
-        self, c_values, vectorised_ode_func, lambdified_fluxes
+        self,
+        c_values,
+        vectorised_ode_func,
+        lambdified_fluxes,
+        initial_conditions_matrix: np.ndarray | None = None,
+        num_model_constants: int | None = None,
     ) -> np.ndarray:
         """Get residuals for least squares optimisation.
 
@@ -656,6 +795,8 @@ class RewardCalculator:
             c_values=c_values,
             vectorised_ode_func=vectorised_ode_func,
             lambdified_fluxes=lambdified_fluxes,
+            initial_conditions_matrix=initial_conditions_matrix,
+            num_model_constants=num_model_constants,
         )
 
         if predictions is None:
@@ -681,12 +822,18 @@ class RewardCalculator:
         export_data = []
         for _, (reward, (exprs, expr_strs)) in self.reward_cache.items():
             folded_strs = [str(e) for e in exprs] if exprs else []
+            initial_conditions = self.initial_conditions_cache.get(tuple(expr_strs))
             export_data.append(
                 {
                     "reward": reward,
                     "equations": " ; ".join(folded_strs) if folded_strs else "",
                     "equations_with_constants": (
                         " ; ".join(expr_strs) if expr_strs else ""
+                    ),
+                    "initial_conditions": (
+                        json.dumps(initial_conditions.T.tolist())
+                        if initial_conditions is not None
+                        else ""
                     ),
                 }
             )
